@@ -1,0 +1,13 @@
+# .gitignore
+
+# Virtual environment
+/.venv
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Other environment-specific files
+.env
+.env.local
+.env.*.local
