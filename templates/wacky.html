@@ -148,7 +148,7 @@
         <select id="player_select" name="player_select"></select>
         <br>
 </form>
-<button onclick="submitPlayer()">ADD</button>
+<button id="adding" onclick="submitPlayer()">ADD</button>
         <br>
         <table id="playerTableBody">
             <thead>
@@ -399,6 +399,7 @@
         document.getElementById('add').style.display = 'none';
         document.getElementById('generateTeam').style.display = 'none';
         document.getElementById('box').style.display = 'none';
+        document.getElementById('adding').style.display = 'none';
     }
 
     function shuffleArray(array) {
