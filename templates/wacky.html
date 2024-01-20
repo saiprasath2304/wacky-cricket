@@ -145,7 +145,7 @@
 
 <form action="/">
         <label for="player_select">Select Player:</label>
-        <select id="player_select" name="player_select"></select>
+        <select id="player_select" name="player_select" multiple></select>
         <br>
 </form>
 <button id="adding" onclick="submitPlayer()">ADD</button>
@@ -226,31 +226,40 @@
         console.log(players)
 
         function submitPlayer() {
-            const playerName = document.getElementById('player_select').value;
+    const selectedPlayers = document.getElementById('player_select').selectedOptions;
 
-            // Check if player is selected
-            if (!playerName) {
-                alert('Please select a player.');
-                return;
-            }
+    // Check if players are selected
+    if (selectedPlayers.length === 0) {
+        alert('Please select at least one player.');
+        return;
+    }
 
-            // Get the table body element
-            const tableBody = document.getElementById('playerTableBody');
+    // Get the table body element
+    const tableBody = document.getElementById('playerTableBody');
 
-            // Create a new row
-            const row = tableBody.insertRow(-1);
+    // Iterate through selected players and add them to the table
+    for (const playerOption of selectedPlayers) {
+        const playerName = playerOption.value;
 
-            // Create cells for serial number and player name
-            const cell1 = row.insertCell(0);
-            const cell2 = row.insertCell(1);
+        // Create a new row
+        const row = tableBody.insertRow(-1);
 
-            // Increment and set serial number
-            const serialNumber = tableBody.rows.length ;
-            cell1.textContent = serialNumber;
+        // Create cells for serial number and player name
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
 
-            // Set player name
-            cell2.textContent = playerName;
-        }
+        // Increment and set serial number
+        const serialNumber = tableBody.rows.length;
+        cell1.textContent = serialNumber;
+
+        // Set player name
+        cell2.textContent = playerName;
+    }
+
+    // Clear the selected options in the dropdown
+    document.getElementById('player_select').selectedIndex = -1;
+}
+
 
     
 
