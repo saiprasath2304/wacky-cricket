@@ -1,0 +1,16 @@
+
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  execute-commands:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: main
+    - name: pyrun
+      run: echo "Hello"
